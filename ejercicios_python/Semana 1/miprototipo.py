@@ -1,3 +1,8 @@
+numero = input("Ingresa")
+print(numero*2)
+
+
+"""
 print("\n¿Eres para mí?")
 puntaje = 0
 pregunta1 = str(input("Eres aseada: "))
@@ -57,4 +62,4 @@ elif puntaje >= 73 and puntaje <= 84:
 else:
     puntaje < 73
     print("\nLo siento, pero no eres mi tipo")
-
+"""
