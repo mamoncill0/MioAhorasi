@@ -1,0 +1,89 @@
+inventory = [
+    {"title": "Book", "price": 10.0, "quantity": 100},
+    {"title": "Book", "price": 15.0, "quantity": 50},
+    {"title": "Book", "price": 20.0, "quantity": 30},
+    {"title": "Book", "price": 25.0, "quantity": 10},
+    {"title": "Book", "price": 30.0, "quantity": 5}
+]
+
+
+def addBook():
+    try:
+        tittle = str(input("Enter the title of the book: ")).capitalize()
+        price = float(input("Enter the price of the book: "))
+        quantity = int(input("Enter the quantity of the book: "))
+        if quantity and price > 0:
+            inventory.append({"title": tittle, "price": price, "quantity": quantity})
+            print("Book added successfully")
+        else:
+            print("Number negative")
+    except ValueError:
+        print("Try again")
+
+def search():
+    tittleasd = str(input("\nSearch a book for its name: ")).capitalize()
+    for tittle in inventory:
+        if tittleasd == tittle["title"]:
+            print(f"Title: {tittle["title"]}\nPrice: {tittle["price"]}\nQuantity: {tittle["quantity"]}")
+            return
+    print("That book not exist")
+    
+# #def search():            #Segunda opcion
+#     flag = False
+#     tittleasd = str(input("\nSearch a book for its name: ")).capitalize()
+#     for tittle in inventory:
+#         if tittleasd == tittle["title"]:
+#             print(f"Title: {tittle["title"]}\nPrice: {tittle["price"]}\nQuantity: {tittle["quantity"]}")
+#             flag = True
+#    if not flag:
+#          print("Is not in the list")
+            
+            
+def update():
+    tittle = str(input("\nWhat do you want book update price")).capitalize
+    for i in inventory:
+        if tittle == i["title"]:
+            updPrice = float(input("New price: "))
+            i["price"] = updPrice
+            print("Update successfully")
+        else:
+            print("That book no exist")
+
+def remove():
+    tittle = str(input("\nWhat book do you want to remove: ")).capitalize()
+    for i in inventory:
+        if tittle == i["title"]:
+            inventory.remove(i)
+            print("Book removed successfully")
+        else:
+            print("That book no exist")
+            
+def calculate():
+    total_value = sum(map(lambda book: book["price"] * book["quantity"], inventory))
+    print(f"The total value of the inventory is: {total_value}")
+
+
+        
+while True:
+    print("""\nWelcome to the inventary"
+        "1. Add a book"
+        "2. Search a book for its name"
+        "3. Update price"
+        "4. Remove a book"
+        "5. Calculate inventary"
+        "6. Exit\n""")
+    option = input("Select an option: ")
+    
+    match option:
+        case "1":
+            addBook()
+        case "2":
+            search()
+        case "3":
+            update()
+        case "4":
+            remove()
+        case "5":
+            calculate()
+        case _:
+            break
